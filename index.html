@@ -1,104 +1,309 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Game</title>
+    <title>GAMV Designers - Fashion & Custom Designs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+        .product-card {
+            transition: all 0.3s ease;
         }
-        canvas {
-            border: 1px solid #000;
-            background-color: #fff;
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .color-dot {
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+        .color-dot:hover {
+            transform: scale(1.2);
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .btn-primary {
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #3B82F6, #2563EB);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        .category-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+        .upload-zone {
+            border: 2px dashed #3B82F6;
+            transition: all 0.3s ease;
+        }
+        .upload-zone:hover {
+            border-color: #2563EB;
+            background-color: #EFF6FF;
+        }
+        .custom-design-card {
+            background: linear-gradient(45deg, #EFF6FF, #E0F2FE);
         }
     </style>
 </head>
-<body>
-    <canvas id="gameCanvas" width="400" height="400"></canvas>
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
+<body class="bg-gray-50">
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <img src="https://via.placeholder.com/150" alt="GAMV Designers Logo" class="h-16 w-16 object-contain rounded-full shadow-md">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">GAMV Designers</h1>
+                        <p class="text-sm text-gray-600">Easy Fashion</p>
+                    </div>
+                </div>
 
-        const box = 20;
-        let snake = [{ x: 9 * box, y: 9 * box }];
-        let direction = 'RIGHT';
-        let food = {
-            x: Math.floor(Math.random() * 20) * box,
-            y: Math.floor(Math.random() * 20) * box
-        };
-        let score = 0;
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600">Home</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600">Shop</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600">Contact</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600" onclick="toggleAboutUs()">About Us</a>
+                </div>
 
-        document.addEventListener('keydown', changeDirection);
+                <div class="flex items-center space-x-6">
+                    <div class="relative">
+                        <input type="text" placeholder="Search..." 
+                               class="w-64 px-4 py-2 rounded-full border-2 border-gray-200 focus:outline-none focus:border-blue-500 transition-colors">
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2">
+                            <i class="fas fa-search text-gray-400 hover:text-blue-500"></i>
+                        </button>
+                    </div>
+                    <a href="#" class="flex items-center text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                    </a>
+                    <a href="#" class="btn-primary text-white px-6 py-2 rounded-full font-medium">
+                        Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-        function changeDirection(event) {
-            if (event.keyCode == 37 && direction != 'RIGHT') {
-                direction = 'LEFT';
-            } else if (event.keyCode == 38 && direction != 'DOWN') {
-                direction = 'UP';
-            } else if (event.keyCode == 39 && direction != 'LEFT') {
-                direction = 'RIGHT';
-            } else if (event.keyCode == 40 && direction != 'UP') {
-                direction = 'DOWN';
-            }
-        }
+    <main class="container mx-auto px-6 py-8">
+        <!-- Custom Design Section -->
+        <div class="mb-16">
+            <div class="custom-design-card rounded-xl p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Create Your Custom Design</h2>
+                        <p class="text-gray-600 text-lg mb-6">Upload your own design and let our experts bring your vision to life</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+                                <span class="text-gray-700">Professional tailoring</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+                                <span class="text-gray-700">Premium fabrics</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-500 mr-3"></i>
+                                <span class="text-gray-700">Perfect fit guarantee</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="upload-zone rounded-xl p-8 bg-white">
+                        <div class="text-center">
+                            <i class="fas fa-cloud-upload-alt text-4xl text-blue-500 mb-4"></i>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Upload Your Design</h3>
+                            <p class="text-gray-600 mb-4">Drag and drop your design file here or</p>
+                            <label class="btn-primary cursor-pointer px-6 py-3 rounded-lg inline-block">
+                                <span class="text-white">Choose File</span>
+                                <input type="file" class="hidden" accept="image/*" onchange="handleFileUpload(event)">
+                            </label>
+                            <p class="text-sm text-gray-500 mt-2">Supported formats: JPG, PNG, PDF</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        function collision(head, array) {
-            for (let i = 0; i < array.length; i++) {
-                if (head.x === array[i].x && head.y === array[i].y) {
-                    return true;
-                }
-            }
-            return false;
-        }
+        <!-- Collections Section -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8 mb-12">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Collections</h2>
+            <p class="text-gray-600 text-lg">Discover your perfect style - From Contemporary to Traditional</p>
+        </div>
 
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- T-Shirts -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
+                <div class="relative">
+                    <img src="https://via.placeholder.com/400x300" alt="T-Shirts" class="w-full h-56 object-cover">
+                    <span class="category-tag">Casual</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">T-Shirts</h3>
+                    <p class="text-gray-600 mb-4">Comfortable casual wear</p>
+                    <div class="mb-4">
+                        <span class="text-gray-600 text-sm">Available Colors:</span>
+                        <div class="flex mt-2 space-x-2">
+                            <div class="color-dot w-8 h-8 bg-red-500 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-blue-500 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-green-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
 
-            for (let i = 0; i < snake.length; i++) {
-                ctx.fillStyle = (i === 0) ? 'green' : 'lightgreen';
-                ctx.fillRect(snake[i].x, snake[i].y, box, box);
-                ctx.strokeStyle = 'darkgreen';
-                ctx.strokeRect(snake[i].x, snake[i].y, box, box);
-            }
+            <!-- Hoodies -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
+                <div class="relative">
+                    <img src="https://via.placeholder.com/400x300" alt="Hoodies" class="w-full h-56 object-cover">
+                    <span class="category-tag">Casual</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Hoodies</h3>
+                    <p class="text-gray-600 mb-4">Stylish comfort wear</p>
+                    <div class="mb-4">
+                        <span class="text-gray-600 text-sm">Available Colors:</span>
+                        <div class="flex mt-2 space-x-2">
+                            <div class="color-dot w-8 h-8 bg-black rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-gray-500 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-white rounded-full border-2"></div>
+                        </div>
+                    </div>
+                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
 
-            ctx.fillStyle = 'red';
-            ctx.fillRect(food.x, food.y, box, box);
+            <!-- Suits -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
+                <div class="relative">
+                    <img src="https://via.placeholder.com/400x300" alt="Suits" class="w-full h-56 object-cover">
+                    <span class="category-tag">Formal</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Suits</h3>
+                    <p class="text-gray-600 mb-4">Premium formal wear</p>
+                    <div class="mb-4">
+                        <span class="text-gray-600 text-sm">Available Colors:</span>
+                        <div class="flex mt-2 space-x-2">
+                            <div class="color-dot w-8 h-8 bg-indigo-900 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-gray-700 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-blue-900 rounded-full"></div>
+                        </div>
+                    </div>
+                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
 
-            let snakeX = snake[0].x;
-            let snakeY = snake[0].y;
+            <!-- Saree -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
+                <div class="relative">
+                    <img src="https://via.placeholder.com/400x300" alt="Traditional Saree" class="w-full h-56 object-cover">
+                    <span class="category-tag">Traditional</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Silk Saree</h3>
+                    <p class="text-gray-600 mb-4">Handcrafted pure silk</p>
+                    <div class="mb-4">
+                        <span class="text-gray-600 text-sm">Available Colors:</span>
+                        <div class="flex mt-2 space-x-2">
+                            <div class="color-dot w-8 h-8 bg-red-600 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-yellow-600 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-green-600 rounded-full"></div>
+                        </div>
+                    </div>
+                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
 
-            if (direction === 'LEFT') snakeX -= box;
-            if (direction === 'UP') snakeY -= box;
-            if (direction === 'RIGHT') snakeX += box;
-            if (direction === 'DOWN') snakeY += box;
+            <!-- Lehenga -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
+                <div class="relative">
+                    <img src="https://via.placeholder.com/400x300" alt="Designer Lehenga" class="w-full h-56 object-cover">
+                    <span class="category-tag">Bridal</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Bridal Lehenga</h3>
+                    <p class="text-gray-600 mb-4">Designer wedding collection</p>
+                    <div class="mb-4">
+                        <span class="text-gray-600 text-sm">Available Colors:</span>
+                        <div class="flex mt-2 space-x-2">
+                            <div class="color-dot w-8 h-8 bg-pink-500 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-red-800 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-purple-600 rounded-full"></div>
+                        </div>
+                    </div>
+                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
 
-            if (snakeX === food.x && snakeY === food.y) {
-                score++;
-                food = {
-                    x: Math.floor(Math.random() * 20) * box,
-                    y: Math.floor(Math.random() * 20) * box
-                };
-            } else {
-                snake.pop();
-            }
+            <!-- Anarkali -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
+                <div class="relative">
+                    <img src="https://via.placeholder.com/400x300" alt="Anarkali Suit" class="w-full h-56 object-cover">
+                    <span class="category-tag">Traditional</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Anarkali Suit</h3>
+                    <p class="text-gray-600 mb-4">Elegant floor-length designs</p>
+                    <div class="mb-4">
+                        <span class="text-gray-600 text-sm">Available Colors:</span>
+                        <div class="flex mt-2 space-x-2">
+                            <div class="color-dot w-8 h-8 bg-pink-500 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-red-800 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-purple-600 rounded-full"></div>
+                        </div>
+                    </div>
+                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
 
-            let newHead = { x: snakeX, y: snakeY };
-
-            if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || collision(newHead, snake)) {
-                clearInterval(game);
-                alert('Game Over! Your score: ' + score);
-            }
-
-            snake.unshift(newHead);
-        }
-
-        let game = setInterval(draw, 100);
-    </script>
+    <footer class="bg-white shadow mt-8">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-gray-800">© 2023 GAMV Designers. All rights reserved.</div>
+                <div class="flex items-center">
+                    <a href="#" class="text-gray-800 text-sm font-semibold hover:text-gray-600">Privacy Policy</a>
+                    <a href="#" class="ml-4 text-gray-800 text-sm font-semibold hover:text-gray-600">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div id="about-us-section" class="container mx-auto px-6 py-8 hidden">
+            <h2 class="text-2xl font-bold text-gray-800">About Us</h2>
+            <p class="mt-4 text-gray-600">
+                Welcome to GAMV Designers, your number one source for all things fashion. We're dedicated to giving you the very best of clothing, with a focus on quality, customer service, and uniqueness.
+            </p>
+            <p class="mt-4 text-gray-600">
+                Founded in 2025 by Adithya Mohanraj and Co-Founder Sameer Sahu, GAMV Designers has come a long way from its beginnings. When we first started out, our passion for creating customized clothing drove us to start our own business.
+            </p>
+            <p class="mt-4 text-gray-600">
+                We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.
+            </p>
+            <p class="mt-4 text-gray-600">
+                Sincerely, <br>
+                The GAMV Designers Team
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
