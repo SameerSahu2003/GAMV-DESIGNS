@@ -59,7 +59,7 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    <img src="https://via.placeholder.com/150" alt="GAMV Designers Logo" class="h-16 w-16 object-contain rounded-full shadow-md">
+                    <img src="Logo.png" alt="GAMV Designers Logo" class="h-16 w-16 object-contain rounded-full shadow-md">
                     <div>
                         <h1 class="text-2xl font-bold text-gray-800">GAMV Designers</h1>
                         <p class="text-sm text-gray-600">Easy Fashion</p>
@@ -74,6 +74,9 @@
                 </div>
 
                 <div class="flex items-center space-x-6">
+                    <a href="#" class="btn-primary text-white px-6 py-2 rounded-full font-medium mr-4">
+                        Book Home Appointment
+                    </a>
                     <div class="relative">
                         <input type="text" placeholder="Search..." 
                                class="w-64 px-4 py-2 rounded-full border-2 border-gray-200 focus:outline-none focus:border-blue-500 transition-colors">
@@ -133,11 +136,34 @@
 
         <!-- Collections Section -->
         <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8 mb-12">
-            <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Collections</h2>
-            <p class="text-gray-600 text-lg">Discover your perfect style - From Contemporary to Traditional</p>
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Readymade Collections</h2>
+            <p class="text-gray-600 text-lg">Quality readymade garments for your everyday needs</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Shirts -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
+                <div class="relative">
+                    <img src="https://via.placeholder.com/400x300" alt="Shirts" class="w-full h-56 object-cover">
+                    <span class="category-tag">Formal</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Shirts</h3>
+                    <p class="text-gray-600 mb-4">Premium formal & casual shirts</p>
+                    <div class="mb-4">
+                        <span class="text-gray-600 text-sm">Available Colors:</span>
+                        <div class="flex mt-2 space-x-2">
+                            <div class="color-dot w-8 h-8 bg-white rounded-full border-2"></div>
+                            <div class="color-dot w-8 h-8 bg-blue-500 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-pink-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
+
             <!-- T-Shirts -->
             <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
                 <div class="relative">
@@ -152,30 +178,76 @@
                         <div class="flex mt-2 space-x-2">
                             <div class="color-dot w-8 h-8 bg-red-500 rounded-full"></div>
                             <div class="color-dot w-8 h-8 bg-blue-500 rounded-full"></div>
-                            <div class="color-dot w-8 h-8 bg-green-500 rounded-full"></div>
-                        </div>
-                    </div>
-                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
-                        Shop Now
-                    </button>
-                </div>
-            </div>
-
-            <!-- Hoodies -->
-            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
-                <div class="relative">
-                    <img src="https://via.placeholder.com/400x300" alt="Hoodies" class="w-full h-56 object-cover">
-                    <span class="category-tag">Casual</span>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Hoodies</h3>
-                    <p class="text-gray-600 mb-4">Stylish comfort wear</p>
-                    <div class="mb-4">
-                        <span class="text-gray-600 text-sm">Available Colors:</span>
-                        <div class="flex mt-2 space-x-2">
                             <div class="color-dot w-8 h-8 bg-black rounded-full"></div>
-                            <div class="color-dot w-8 h-8 bg-gray-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Churidar -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
+                <div class="relative">
+                    <img src="https://via.placeholder.com/400x300" alt="Churidar" class="w-full h-56 object-cover">
+                    <span class="category-tag">Traditional</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Churidar</h3>
+                    <p class="text-gray-600 mb-4">Elegant traditional wear</p>
+                    <div class="mb-4">
+                        <span class="text-gray-600 text-sm">Available Colors:</span>
+                        <div class="flex mt-2 space-x-2">
+                            <div class="color-dot w-8 h-8 bg-yellow-500 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-green-500 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-red-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Towels -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
+                <div class="relative">
+                    <img src="https://via.placeholder.com/400x300" alt="Towels" class="w-full h-56 object-cover">
+                    <span class="category-tag">Home</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Towels</h3>
+                    <p class="text-gray-600 mb-4">Soft & absorbent cotton towels</p>
+                    <div class="mb-4">
+                        <span class="text-gray-600 text-sm">Available Colors:</span>
+                        <div class="flex mt-2 space-x-2">
+                            <div class="color-dot w-8 h-8 bg-blue-300 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-pink-300 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-gray-300 rounded-full"></div>
+                        </div>
+                    </div>
+                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Handkerchiefs -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
+                <div class="relative">
+                    <img src="https://via.placeholder.com/400x300" alt="Handkerchiefs" class="w-full h-56 object-cover">
+                    <span class="category-tag">Accessories</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Handkerchiefs</h3>
+                    <p class="text-gray-600 mb-4">Pure cotton handkerchiefs</p>
+                    <div class="mb-4">
+                        <span class="text-gray-600 text-sm">Available Colors:</span>
+                        <div class="flex mt-2 space-x-2">
                             <div class="color-dot w-8 h-8 bg-white rounded-full border-2"></div>
+                            <div class="color-dot w-8 h-8 bg-blue-200 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-pink-200 rounded-full"></div>
                         </div>
                     </div>
                     <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
@@ -184,90 +256,21 @@
                 </div>
             </div>
 
-            <!-- Suits -->
+            <!-- Embroidered Blouse -->
             <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
                 <div class="relative">
-                    <img src="https://via.placeholder.com/400x300" alt="Suits" class="w-full h-56 object-cover">
-                    <span class="category-tag">Formal</span>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Suits</h3>
-                    <p class="text-gray-600 mb-4">Premium formal wear</p>
-                    <div class="mb-4">
-                        <span class="text-gray-600 text-sm">Available Colors:</span>
-                        <div class="flex mt-2 space-x-2">
-                            <div class="color-dot w-8 h-8 bg-indigo-900 rounded-full"></div>
-                            <div class="color-dot w-8 h-8 bg-gray-700 rounded-full"></div>
-                            <div class="color-dot w-8 h-8 bg-blue-900 rounded-full"></div>
-                        </div>
-                    </div>
-                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
-                        Shop Now
-                    </button>
-                </div>
-            </div>
-
-            <!-- Saree -->
-            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
-                <div class="relative">
-                    <img src="https://via.placeholder.com/400x300" alt="Traditional Saree" class="w-full h-56 object-cover">
+                    <img src="https://via.placeholder.com/400x300" alt="Embroidered Blouse" class="w-full h-56 object-cover">
                     <span class="category-tag">Traditional</span>
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Silk Saree</h3>
-                    <p class="text-gray-600 mb-4">Handcrafted pure silk</p>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Embroidered Blouse</h3>
+                    <p class="text-gray-600 mb-4">Beautifully embroidered blouses</p>
                     <div class="mb-4">
                         <span class="text-gray-600 text-sm">Available Colors:</span>
                         <div class="flex mt-2 space-x-2">
-                            <div class="color-dot w-8 h-8 bg-red-600 rounded-full"></div>
-                            <div class="color-dot w-8 h-8 bg-yellow-600 rounded-full"></div>
-                            <div class="color-dot w-8 h-8 bg-green-600 rounded-full"></div>
-                        </div>
-                    </div>
-                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
-                        Shop Now
-                    </button>
-                </div>
-            </div>
-
-            <!-- Lehenga -->
-            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
-                <div class="relative">
-                    <img src="https://via.placeholder.com/400x300" alt="Designer Lehenga" class="w-full h-56 object-cover">
-                    <span class="category-tag">Bridal</span>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Bridal Lehenga</h3>
-                    <p class="text-gray-600 mb-4">Designer wedding collection</p>
-                    <div class="mb-4">
-                        <span class="text-gray-600 text-sm">Available Colors:</span>
-                        <div class="flex mt-2 space-x-2">
-                            <div class="color-dot w-8 h-8 bg-pink-500 rounded-full"></div>
-                            <div class="color-dot w-8 h-8 bg-red-800 rounded-full"></div>
-                            <div class="color-dot w-8 h-8 bg-purple-600 rounded-full"></div>
-                        </div>
-                    </div>
-                    <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
-                        Shop Now
-                    </button>
-                </div>
-            </div>
-
-            <!-- Anarkali -->
-            <div class="product-card bg-white rounded-xl overflow-hidden shadow-lg">
-                <div class="relative">
-                    <img src="https://via.placeholder.com/400x300" alt="Anarkali Suit" class="w-full h-56 object-cover">
-                    <span class="category-tag">Traditional</span>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Anarkali Suit</h3>
-                    <p class="text-gray-600 mb-4">Elegant floor-length designs</p>
-                    <div class="mb-4">
-                        <span class="text-gray-600 text-sm">Available Colors:</span>
-                        <div class="flex mt-2 space-x-2">
-                            <div class="color-dot w-8 h-8 bg-pink-500 rounded-full"></div>
-                            <div class="color-dot w-8 h-8 bg-red-800 rounded-full"></div>
-                            <div class="color-dot w-8 h-8 bg-purple-600 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-red-500 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-green-500 rounded-full"></div>
+                            <div class="color-dot w-8 h-8 bg-blue-500 rounded-full"></div>
                         </div>
                     </div>
                     <button class="btn-primary w-full text-white px-4 py-3 rounded-lg font-medium">
@@ -278,32 +281,37 @@
         </div>
     </main>
 
-    <footer class="bg-white shadow mt-8">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-gray-800">© 2023 GAMV Designers. All rights reserved.</div>
-                <div class="flex items-center">
-                    <a href="#" class="text-gray-800 text-sm font-semibold hover:text-gray-600">Privacy Policy</a>
-                    <a href="#" class="ml-4 text-gray-800 text-sm font-semibold hover:text-gray-600">Terms of Service</a>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-lg font-bold">GAMV Designers</h3>
+                    <p class="text-sm">Easy Fashion</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-        </div>
-        <div id="about-us-section" class="container mx-auto px-6 py-8 hidden">
-            <h2 class="text-2xl font-bold text-gray-800">About Us</h2>
-            <p class="mt-4 text-gray-600">
-                Welcome to GAMV Designers, your number one source for all things fashion. We're dedicated to giving you the very best of clothing, with a focus on quality, customer service, and uniqueness.
-            </p>
-            <p class="mt-4 text-gray-600">
-                Founded in 2025 by Adithya Mohanraj and Co-Founder Sameer Sahu, GAMV Designers has come a long way from its beginnings. When we first started out, our passion for creating customized clothing drove us to start our own business.
-            </p>
-            <p class="mt-4 text-gray-600">
-                We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.
-            </p>
-            <p class="mt-4 text-gray-600">
-                Sincerely, <br>
-                The GAMV Designers Team
-            </p>
+            <div class="mt-6 text-center text-gray-400 text-sm">
+                &copy; 2023 GAMV Designers. All rights reserved.
+            </div>
         </div>
     </footer>
+
+    <script>
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                alert(`File uploaded: ${file.name}`);
+            }
+        }
+
+        function toggleAboutUs() {
+            alert('About Us section coming soon!');
+        }
+    </script>
 </body>
 </html>
