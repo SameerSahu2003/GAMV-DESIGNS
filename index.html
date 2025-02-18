@@ -1,3 +1,5 @@
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -52,31 +54,82 @@
         .custom-design-card {
             background: linear-gradient(45deg, #EFF6FF, #E0F2FE);
         }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            z-index: 50;
+            padding: 1rem;
+        }
+        
+        /* Calendar modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .calendar-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 90%;
+            width: 400px;
+        }
+        
+        .time-slot {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .time-slot:hover {
+            background-color: #EFF6FF;
+        }
+        
+        .time-slot.selected {
+            background-color: #3B82F6;
+            color: white;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
     <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-6 py-4">
+        <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    <img src="Logo.png" alt="GAMV Designers Logo" class="h-16 w-16 object-contain rounded-full shadow-md">
+                    <img src="Logo.png" alt="GAMV Designers Logo" class="h-12 w-12 md:h-16 md:w-16 object-contain rounded-full shadow-md">
                     <div>
-                        <h1 class="text-2xl font-bold text-gray-800">GAMV Designers</h1>
+                        <h1 class="text-xl md:text-2xl font-bold text-gray-800">GAMV Designers</h1>
                         <p class="text-sm text-gray-600">Easy Fashion</p>
                     </div>
                 </div>
 
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+
+                <!-- Desktop navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#" class="nav-link text-gray-700 hover:text-blue-600">Home</a>
                     <a href="#" class="nav-link text-gray-700 hover:text-blue-600">Shop</a>
                     <a href="#" class="nav-link text-gray-700 hover:text-blue-600">Contact</a>
-                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600" onclick="toggleAboutUs()">About Us</a>
                 </div>
 
-                <div class="flex items-center space-x-6">
-                    <a href="#" class="btn-primary text-white px-6 py-2 rounded-full font-medium mr-4">
-                        Book Home Appointment
-                    </a>
+                <div class="hidden md:flex items-center space-x-6">
                     <div class="relative">
                         <input type="text" placeholder="Search..." 
                                class="w-64 px-4 py-2 rounded-full border-2 border-gray-200 focus:outline-none focus:border-blue-500 transition-colors">
@@ -95,7 +148,40 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-8">
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="flex justify-end mb-4">
+            <button onclick="toggleMobileMenu()">
+                <i class="fas fa-times text-2xl text-gray-700"></i>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-4">
+            <a href="#" class="text-gray-700 hover:text-blue-600 py-2">Home</a>
+            <a href="#" class="text-gray-700 hover:text-blue-600 py-2">Shop</a>
+            <a href="#" class="text-gray-700 hover:text-blue-600 py-2">Contact</a>
+            <div class="relative mt-4">
+                <input type="text" placeholder="Search..." 
+                       class="w-full px-4 py-2 rounded-full border-2 border-gray-200 focus:outline-none focus:border-blue-500">
+                <button class="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <i class="fas fa-search text-gray-400"></i>
+                </button>
+            </div>
+            <a href="#" class="btn-primary text-white px-6 py-2 rounded-full font-medium text-center mt-4">
+                Login
+            </a>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Appointment Booking Section -->
+        <div class="mb-16 bg-white rounded-xl shadow-lg p-6 md:p-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Book Your Home Appointment</h2>
+            <p class="text-gray-600 mb-6">Schedule a convenient time for our designer to visit your home</p>
+            <button onclick="openCalendar()" class="btn-primary text-white px-8 py-3 rounded-lg font-medium">
+                Book Now
+            </button>
+        </div>
+
         <!-- Custom Design Section -->
         <div class="mb-16">
             <div class="custom-design-card rounded-xl p-8">
@@ -281,37 +367,202 @@
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <h3 class="text-lg font-bold">GAMV Designers</h3>
-                    <p class="text-sm">Easy Fashion</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+    <!-- Calendar Modal -->
+    <div class="modal" id="calendarModal">
+        <div class="calendar-container">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-800">Select Appointment Date</h3>
+                <button onclick="closeCalendar()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="calendar" class="mb-6">
+                <!-- Calendar will be inserted here by JavaScript -->
+            </div>
+            <div id="timeSlots" class="hidden">
+                <h4 class="font-semibold text-gray-700 mb-4">Available Time Slots</h4>
+                <div class="grid grid-cols-3 gap-2 max-h-48 overflow-y-auto">
+                    <!-- Time slots will be inserted here -->
                 </div>
             </div>
-            <div class="mt-6 text-center text-gray-400 text-sm">
-                &copy; 2023 GAMV Designers. All rights reserved.
+            <div id="bookingSummary" class="hidden mt-4 p-4 bg-blue-50 rounded-lg">
+                <h4 class="font-semibold text-gray-700 mb-2">Booking Summary</h4>
+                <p id="selectedDateTime" class="text-gray-600"></p>
             </div>
+            <button id="confirmBooking" class="btn-primary w-full text-white px-6 py-3 rounded-lg font-medium mt-4 hidden">
+                Confirm Booking
+            </button>
         </div>
-    </footer>
-
+    </div>
+    
     <script>
-        function handleFileUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                alert(`File uploaded: ${file.name}`);
+    let selectedDate = null;
+    let selectedTimeSlot = null;
+    
+    function generateCalendar() {
+        const calendar = document.getElementById('calendar');
+        const today = new Date();
+        const currentMonth = today.getMonth();
+        const currentYear = today.getFullYear();
+    
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+    
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+    
+        let calendarHTML = `
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold text-center">${monthNames[currentMonth]} ${currentYear}</h3>
+            </div>
+            <div class="grid grid-cols-7 gap-1">
+                <div class="text-center text-sm font-medium text-gray-600">Sun</div>
+                <div class="text-center text-sm font-medium text-gray-600">Mon</div>
+                <div class="text-center text-sm font-medium text-gray-600">Tue</div>
+                <div class="text-center text-sm font-medium text-gray-600">Wed</div>
+                <div class="text-center text-sm font-medium text-gray-600">Thu</div>
+                <div class="text-center text-sm font-medium text-gray-600">Fri</div>
+                <div class="text-center text-sm font-medium text-gray-600">Sat</div>
+        `;
+    
+        // Add empty cells for days before the first day of the month
+        for (let i = 0; i < firstDayOfMonth; i++) {
+            calendarHTML += '<div></div>';
+        }
+    
+        // Add calendar days
+        for (let day = 1; day <= daysInMonth; day++) {
+            const date = new Date(currentYear, currentMonth, day);
+            const isToday = date.toDateString() === today.toDateString();
+            const isPast = date < today;
+            
+            let className = "p-2 text-center rounded-lg cursor-pointer transition-colors";
+            if (isToday) {
+                className += " bg-blue-500 text-white";
+            } else if (isPast) {
+                className += " text-gray-400 cursor-not-allowed";
+            } else {
+                className += " hover:bg-blue-100";
             }
+    
+            calendarHTML += `
+                <div class="${className}" 
+                     onclick="${!isPast ? `selectDate(${day}, ${currentMonth}, ${currentYear})` : ''}"
+                     ${isPast ? 'disabled' : ''}>
+                    ${day}
+                </div>`;
         }
-
-        function toggleAboutUs() {
-            alert('About Us section coming soon!');
+    
+        calendarHTML += '</div>';
+        calendar.innerHTML = calendarHTML;
+    }
+    
+    function generateTimeSlots() {
+        const timeSlotsContainer = document.querySelector('#timeSlots .grid');
+        const timeSlots = [];
+        
+        // Morning slots
+        for (let hour = 9; hour <= 11; hour++) {
+            timeSlots.push({
+                time: `${hour}:00 AM`,
+                availability: Math.random() > 0.3 // Randomly set availability
+            });
+            timeSlots.push({
+                time: `${hour}:30 AM`,
+                availability: Math.random() > 0.3
+            });
         }
+        
+        // Afternoon slots
+        for (let hour = 12; hour <= 5; hour++) {
+            timeSlots.push({
+                time: `${hour}:00 PM`,
+                availability: Math.random() > 0.3
+            });
+            timeSlots.push({
+                time: `${hour}:30 PM`,
+                availability: Math.random() > 0.3
+            });
+        }
+    
+        let timeSlotsHTML = '';
+        timeSlots.forEach(slot => {
+            if (slot.availability) {
+                timeSlotsHTML += `
+                    <div class="time-slot p-3 text-center border rounded-lg cursor-pointer hover:bg-blue-50 transition-colors"
+                         onclick="selectTimeSlot(this, '${slot.time}')">
+                        ${slot.time}
+                    </div>`;
+            } else {
+                timeSlotsHTML += `
+                    <div class="p-3 text-center border rounded-lg bg-gray-100 text-gray-400 cursor-not-allowed">
+                        ${slot.time}
+                    </div>`;
+            }
+        });
+    
+        timeSlotsContainer.innerHTML = timeSlotsHTML;
+        document.getElementById('timeSlots').classList.remove('hidden');
+    }
+    
+    function openCalendar() {
+        document.getElementById('calendarModal').style.display = 'flex';
+        generateCalendar();
+        // Hide time slots and confirm button when opening calendar
+        document.getElementById('timeSlots').classList.add('hidden');
+        document.getElementById('bookingSummary').classList.add('hidden');
+        document.getElementById('confirmBooking').classList.add('hidden');
+    }
+    
+    function closeCalendar() {
+        document.getElementById('calendarModal').style.display = 'none';
+        selectedDate = null;
+        selectedTimeSlot = null;
+    }
+    
+    function selectDate(day, month, year) {
+        selectedDate = new Date(year, month, day);
+        // Reset time slot selection
+        selectedTimeSlot = null;
+        // Hide confirmation button until time is selected
+        document.getElementById('confirmBooking').classList.add('hidden');
+        document.getElementById('bookingSummary').classList.add('hidden');
+        generateTimeSlots();
+    }
+    
+    function selectTimeSlot(element, time) {
+        // Remove selection from other time slots
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.classList.remove('bg-blue-500', 'text-white');
+        });
+        
+        // Add selection to clicked time slot
+        element.classList.add('bg-blue-500', 'text-white');
+        
+        selectedTimeSlot = time;
+        
+        // Update and show booking summary
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const dateString = selectedDate.toLocaleDateString('en-US', options);
+        document.getElementById('selectedDateTime').textContent = 
+            `Date: ${dateString}\nTime: ${selectedTimeSlot}`;
+        document.getElementById('bookingSummary').classList.remove('hidden');
+        
+        // Show confirm button
+        document.getElementById('confirmBooking').classList.remove('hidden');
+    }
+    
+    // Initialize calendar when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        // Add click handler for confirm booking
+        document.getElementById('confirmBooking').addEventListener('click', () => {
+            if (selectedDate && selectedTimeSlot) {
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const dateString = selectedDate.toLocaleDateString('en-US', options);
+                alert(`Appointment booked successfully!\n\nDate: ${dateString}\nTime: ${selectedTimeSlot}`);
+                closeCalendar();
+            }
+        });
+    });
     </script>
-</body>
-</html>
